@@ -18,13 +18,14 @@ interface RickAndMortyPropsI {
 
 class RickAndMorty extends React.Component< RickAndMortyPropsI, RickAndMortyStateI > {
 
-    constructor(props: RickAndMortyPropsI) {
-        super(props);
-        this.state = {
+        state: RickAndMortyStateI = {
             firstLoad: true,
             isLoading: true,
             characters: [],
         };
+
+    constructor(props: RickAndMortyPropsI) {
+        super(props);
     }
 
     componentWillMount() {
@@ -38,11 +39,11 @@ class RickAndMorty extends React.Component< RickAndMortyPropsI, RickAndMortyStat
                         firstLoad: false,
                     });
                 });
-            }, 1500);
+            }, 500);
         }
     }
 
-    render() {
+    render(): JSX.Element {
         return(
             <div className={styles.container}>
                 <div className={styles.cardList}>
@@ -53,7 +54,7 @@ class RickAndMorty extends React.Component< RickAndMortyPropsI, RickAndMortyStat
                         <CircularProgress color="success" />
                     </Stack> :
                     <React.Fragment>
-                        {this.state.characters.map((el) => <CardItem item={el} key={`cardItem_${el.id}`}/>)}
+                        {this.state.characters.map((el: CharacterI) => <CardItem item={el} key={`cardItem_${el.id}`}/>)}
                     </React.Fragment>
                     }
                 </div>
