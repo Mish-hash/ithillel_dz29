@@ -13,7 +13,6 @@ interface RickAndMortyStateI {
 }
 
 interface RickAndMortyPropsI {
-
 }
 
 class RickAndMorty extends React.Component< RickAndMortyPropsI, RickAndMortyStateI > {
